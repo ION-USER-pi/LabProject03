@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>labproject03</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Internal Stylesheet -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--primary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .style-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            transform: translateY(0);
+            cursor: pointer;
+        }
+
+        .style-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .style-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .style-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Styles Odyssey 🎨</h1>
+            <p>Exploring the Infinite Dimensions of Design</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="style-grid" id="stylesContainer"></div>
+    </div>
+
+    <!-- jQuery and custom script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const styles = [
+                { name: 'Minimalist', icon: 'fa-minimize', description: 'Less is more' },
+                { name: 'Brutalist', icon: 'fa-chess-board', description: 'Raw, bold, unapologetic' },
+                { name: 'Skeuomorphic', icon: 'fa-tablet', description: 'Realistic, textured design' },
+                { name: 'Flat Design', icon: 'fa-square', description: 'Clean, two-dimensional' },
+                { name: 'Material', icon: 'fa-layer-group', description: 'Google\'s design language' },
+                { name: 'Neumorphic', icon: 'fa-circle', description: 'Soft, embossed look' }
+            ];
+
+            const $container = $('#stylesContainer');
+
+            styles.forEach(style => {
+                const $card = $(`
+                    <div class="style-card" data-style="${style.name}">
+                        <i class="fas ${style.icon}"></i>
+                        <h3>${style.name}</h3>
+                        <p>${style.description}</p>
+                    </div>
+                `);
+
+                $card.on('click', function() {
+                    alert(`Exploring the ${style.name} design style!`);
+                });
+
+                $container.append($card);
+            });
+        });
+    </script>
+</body>
+</html>
